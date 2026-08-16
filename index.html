@@ -1,94 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>sun and earth and moon</title>
-        <style>
-            body {
-                margin: 0;
-                height: 100vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: black;
-                overflow: hidden;
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sun and earth and moon</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #181E4C;
+            overflow: hidden;
+        }
+
+        .container {
+            font-size: 10px;
+            width: 40em;
+            height: 40em;
+            position: relative;
+        }
+
+        .sun {
+            position: absolute;
+            top: 15em;
+            left: 15em;
+            width: 10em;
+            height: 10em;
+            background-color: yellow;
+            border-radius: 50%;
+            box-shadow: 0 0 3em white;
+        }
+
+        .earth,
+        .moon {
+            position: absolute;
+            border-style: solid;
+            border-color: white transparent transparent transparent;
+            border-width: 0.1em 0.1em 0 0;
+            border-radius: 50%;
+        }
+
+        .earth {
+            top: 5em;
+            left: 5em;
+            width: 30em;
+            height: 30em;
+            animation: orbit 36.5s linear infinite;
+        }
+
+        .moon {
+            top: 0;
+            right: 0;
+            width: 8em;
+            height: 8em;
+            animation: orbit 2.1s linear infinite;
+        }
+
+        .earth::before,
+        .moon::before {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .earth::before {
+            top: 2.8em;
+            right: 2.9em;
+            width: 3em;
+            height: 3em;
+            background-color: aqua;
+        }
+
+        .moon::before {
+            top: 0.8em;
+            right: 0.2em;
+            width: 1.2em;
+            height: 1.2em;
+            background-color: silver;
+        }
+
+        @keyframes orbit {
+            to {
+                transform: rotate(360deg);
             }
-            .container {
-                font-size: 10px;
-                width: 40em;
-                height: 40em;
-                position: relative;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            /* allow body to grow */
+            overflow-x: hidden;
+            /* only block horizontal scroll */
+        }
+
+        /* Snow layer */
+        .snow {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .flake {
+            position: absolute;
+            top: -20px;
+            color: white;
+            font-size: 11px;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-20px) translateX(0) rotate(0deg);
             }
-            .sun {
-                position: absolute;
-                top: 15em;
-                left: 15em;
-                width: 10em;
-                height: 10em;
-                background-color: yellow;
-                border-radius: 50%;
-                box-shadow: 0 0 3em white;
+
+            50% {
+                transform: translateY(50vh) translateX(40px) rotate(180deg);
             }
-            .earth,.moon {
-                position: absolute;
-                border-style: solid;
-                border-color: white transparent transparent transparent;
-                border-width: 0.1em 0.1em 0 0;
-                border-radius: 50%;
+
+            100% {
+                transform: translateY(110vh) translateX(-40px) rotate(360deg);
             }
-            .earth {
-                top: 5em;
-                left: 5em;
-                width: 30em;
-                height: 30em;
-                animation: orbit 36.5s linear infinite;
-            }
-            .moon {
-                top: 0;
-                right: 0;
-                width: 8em;
-                height: 8em;
-                animation: orbit 2.1s linear infinite;
-            }
-            .earth::before,
-            .moon::before {
-                content: '';
-                position: absolute;
-                border-radius: 50%;
-            }
-            .earth::before {
-                top: 2.8em;
-                right: 2.9em;
-                width: 3em;
-                height: 3em;
-                background-color: aqua;
-            }
-            .moon::before {
-                top: 0.8em;
-                right: 0.2em;
-                width: 1.2em;
-                height: 1.2em;
-                background-color: silver;
-            }
-            @keyframes orbit {
-                to {
-                    transform: rotate(360deg);
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="sun"></div>
-            <div class="earth">
-                <div class="moon"></div>
-            </div>
+        }
+
+        /* Different snowflake sizes/speeds */
+        .flake:nth-child(1) {
+            left: 5%;
+            animation-duration: 8s;
+        }
+
+        .flake:nth-child(2) {
+            left: 15%;
+            animation-duration: 11s;
+            font-size: 22px;
+        }
+
+        .flake:nth-child(3) {
+            left: 25%;
+            animation-duration: 7s;
+        }
+
+        .flake:nth-child(4) {
+            left: 35%;
+            animation-duration: 13s;
+            font-size: 10px;
+        }
+
+        .flake:nth-child(5) {
+            left: 45%;
+            animation-duration: 9s;
+        }
+
+        .flake:nth-child(6) {
+            left: 55%;
+            animation-duration: 12s;
+            font-size: 20px;
+        }
+
+        .flake:nth-child(7) {
+            left: 65%;
+            animation-duration: 8s;
+        }
+
+        .flake:nth-child(8) {
+            left: 75%;
+            animation-duration: 10s;
+            font-size: 12px;
+        }
+
+        .flake:nth-child(9) {
+            left: 85%;
+            animation-duration: 14s;
+        }
+
+        .flake:nth-child(10) {
+            left: 75%;
+            animation-duration: 5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="snow">
+        <span class="flake">★</span>
+        <span class="flake">☆</span>
+        <span class="flake">☆</span>
+        <span class="flake">★</span>
+        <span class="flake">🤺</span>
+        <span class="flake">★</span>
+        <span class="flake">★</span>
+        <span class="flake">★</span>
+        <span class="flake">☆</span>
+        <span class="flake">🛸</span>
+    </div>
+    <div class="container">
+        <div class="sun">*you</div>
+        <div class="earth">
+            <div class="moon"></div>
         </div>
-        <!-- here is a music script 88 to 92 and js -->
-        <audio id="bgMusic" loop>
-            <source src="assets/yellow.mp3" type="audio/mpeg">
-        </audio> 
-        <script src="script.js"></script>
-    </body>
+    </div>
+    <!-- here is a music script 88 to 92 and js -->
+    <audio id="bgMusic" loop>
+        <source src="assets/yellow.mp3" type="audio/mpeg">
+    </audio>
+    <script src="script.js"></script>
+</body>
+
 </html>
